@@ -3,7 +3,7 @@ import { SearchBar } from "../searchBar/SearchBar";
 import { NavLink } from 'react-router-dom';
 export const Navbar = () => {
   const navList = (
-    <ul className="navbar-nav mr-auto mx-auto d-flex gap-2 ">
+    <ul className="navbar-nav mr-auto  d-flex gap-2 ">
       <li className="nav-item">
         <NavLink className="nav-link text-decoration-none" to="/">Home </NavLink>
       </li>
@@ -25,19 +25,17 @@ export const Navbar = () => {
   )
 
   return (
-    <nav className="navbar navbar-expand-lg text-uppercase fixed-top">
+    <nav className="navbar navbar-expand-lg text-uppercase fixed-top  ">
   <NavLink className="navbar-brand fs-3 ps-3" to="/">Navbar</NavLink>
+  <SearchBar className="search-bar" />
   <button className="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
 
-  <div className="collapse navbar-collapse ps-3" id="navbarSupportedContent">
+  <div className="collapse navbar-collapse nav-menu" id="navbarSupportedContent ">
       {navList}
 
-    <SearchBar/>
   </div>
-
-
 </nav>
   );
 };

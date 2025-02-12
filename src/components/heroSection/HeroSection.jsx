@@ -16,15 +16,14 @@ const PrevArrow = ({ onClick }) => (
     </button>
   );
 const images = [
-  "/images/sunglasses.jpg",
-  "/images/powder.jpg",
-  "/images/clothes.jpg",
-  "/images/saree.jpg",
-"/images/guasha.jpg",
-
-  "/images/sari.jpg",
-  "/images/earbuds.jpg",
-  "/images/makeup.jpg",
+  "/images/hero/sunglasses.jpg",
+  "/images/hero/powder.jpg",
+  "/images/hero/clothes.jpg",
+  "/images/hero/saree.jpg",
+"/images/hero/guasha.jpg",
+  "/images/hero/sari.jpg",
+  "/images/hero/earbuds.jpg",
+  "/images/hero/makeup.jpg",
 ];
 
 export const HeroSection = () => {
@@ -45,7 +44,7 @@ export const HeroSection = () => {
     <div className="hero-slider">
       <Slider {...settings}>
         {images.map((img, index) => (
-          <div key={index} className="slide pt-2 mt-1">
+          <div key={index} className="slide pt-md-2 mt-md-1">
             <img src={img} alt={`Slide ${index}`} style={{ width: "100%", height: "500px", objectFit: "cover" }} />
           </div>
         ))}

@@ -12,10 +12,13 @@ const category = [
 
 export const Category = () => {
     return (
-        <div className="container mt-3">
-            <div className="row justify-content-center justify-content-xl-between">
+        <div className="container mt-3 container-category">
+            <div className="text-center my-4">
+          <h1 className="fw-semibold fs-3">Categories</h1>
+      </div>
+            <div className="row justify-content-center justify-content-xl-between ps-md-5">
                 {category.map((item, index) => (
-                    <div key={index} className="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-auto text-center mb-3">
+                    <div key={index} className="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-auto text-center mb-3 ">
                         <div className="rounded-circle d-flex align-items-center justify-content-center mb-2 category shadow"
                              style={{ width: "85px", height: "85px", transition: "0.3s" }}>
                             <img src={item.image} alt={item.name} className="img-fluid rounded-circle" 

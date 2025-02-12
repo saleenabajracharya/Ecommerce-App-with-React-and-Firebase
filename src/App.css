@@ -4,7 +4,7 @@
   font-family: "Poppins", serif;;
 }
 :root {
-  --theme-color: #5e8554;
+  --theme-color: #67a357;
   --font-color: #FFFFFF;
 }
 body, html {
@@ -74,3 +74,59 @@ nav a {
   width: 100vw;
   overflow: hidden;
 }
+
+input.search{
+  width: 600px;
+}
+
+@media (max-width: 576px) {
+  .container-category .row{
+    padding-left: 2.5rem;
+  }
+
+  input.search{
+    width: 250px;
+  }
+  
+}
+
+@media (min-width: 1200px) {
+  input.search{
+    width: 500px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1028px) {
+  input.search{
+    width: 400px;
+  }
+
+  .navbar-expand-lg .navbar-collapse {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 1028px) and (max-width: 1208px) {
+  input.search{
+    width: 400px;
+  }
+
+  .navbar-expand-lg .navbar-collapse {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  input.search{
+    width: 400px;
+  }
+}
+
+@media (max-width: 767px) {
+  .searching{
+    background-color: var(--theme-color);
+    max-width: 100%;
+  }
+
+}
+
