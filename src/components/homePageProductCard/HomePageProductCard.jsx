@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useNavigate } from "react-router";
 const productData = [
   {
     id: 1,
@@ -84,6 +84,7 @@ const productData = [
 ];
 
 export const HomePageProductCard = () => {
+  const navigate = useNavigate();
   return (
     <div className="mt-10">
       {/* Heading  */}
@@ -98,7 +99,8 @@ export const HomePageProductCard = () => {
               const { image, title, price } = item;
               return (
                 <div key={index} className="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 p-2">
-                  <div className="border border-secondary rounded overflow-hidden shadow-sm cursor-pointer">
+                  <div className="border border-secondary rounded overflow-hidden shadow-sm cursor-pointer" onClick={() => navigate('/product-info', { state: item })}
+                  >
                     <img
                       className="img-fluid"
                       src={image}

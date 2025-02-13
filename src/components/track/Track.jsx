@@ -7,7 +7,7 @@ export const Track = () => {
         {/* Main */}
         <div className="row text-center">
           {/* Track 1 */}
-          <div className="col-md-4 col-sm-9 col-9 p-3 ms-sm-5" style={{ marginLeft: window.innerWidth < 576 ? "40px" : "0px" }}>
+          <div className="col-md-4 col-sm-6  p-3">
             <div className="border border-secondary bg-light shadow-sm px-4 py-4 rounded-lg">
               <svg
                 className="text-danger mb-3"
@@ -31,7 +31,7 @@ export const Track = () => {
           </div>
 
           {/* Track 2 */}
-          <div className="col-md-4 col-sm-9 col-9 p-3 ms-sm-5" style={{ marginLeft: window.innerWidth < 576 ? "40px" : "0px" }}>
+          <div className="col-md-4 col-sm-6 col-12 p-3">
             <div className="border border-secondary bg-light shadow-sm px-4 py-4 rounded-lg">
               <svg
                 className="text-danger mb-3"
@@ -55,7 +55,7 @@ export const Track = () => {
           </div>
 
           {/* Track 3 */}
-          <div className="col-md-4 col-sm-9 col-9 p-3 ms-sm-5" style={{ marginLeft: window.innerWidth < 576 ? "40px" : "0px" }}>
+          <div className="col-md-4 col-sm-6 col-12 p-3">
             <div className="border border-secondary bg-light shadow-sm px-4 py-4 rounded-lg">
               <svg
                 className="text-danger mb-3"

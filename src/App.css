@@ -128,5 +128,10 @@ input.search{
     max-width: 100%;
   }
 
+
 }
 
+footer{
+  background-color: var(--theme-color);
+
+}
