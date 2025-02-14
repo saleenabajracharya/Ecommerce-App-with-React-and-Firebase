@@ -14,7 +14,11 @@ export const Navbar = () => {
         <NavLink className="nav-link text-decoration-none " to="/sign-up">Sign up</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link text-decoration-none " to="/">Salina</NavLink>
+        <NavLink className="nav-link text-decoration-none " to="/user-dashboard">Salina</NavLink>
+        
+      </li>
+      <li className="nav-item">
+        <NavLink className="nav-link text-decoration-none " to="/admin-dashboard">Admin</NavLink>
         
       </li>
       <li className="nav-item">

@@ -99,7 +99,7 @@ export const HomePageProductCard = () => {
               const { image, title, price } = item;
               return (
                 <div key={index} className="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 p-2">
-                  <div className="border border-secondary rounded overflow-hidden shadow-sm cursor-pointer" onClick={() => navigate('/product-info', { state: item })}
+                  <div className="border border-secondary rounded overflow-hidden shadow-sm cursor-pointer hover-shadow" onClick={() => navigate('/product-info', { state: item })}
                   >
                     <img
                       className="img-fluid"

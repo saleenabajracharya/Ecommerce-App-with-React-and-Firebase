@@ -8,6 +8,11 @@ import { NoPage } from './components/pages/noPage/NoPage'
 import { ProductInfo } from './components/productInfo/ProductInfo'
 import { ScrollTop } from './components/scrollTop/ScrollTop'
 import { CartPage } from './components/pages/Cart/CartPage'
+import { AllProducts } from './components/allProducts/AllProducts'
+import { Login } from './components/registration/Login'
+import { SignUp } from './components/registration/SignUp'
+import { UserDashboard } from './components/pages/user/UserDashboard'
+import { AdminDashboard } from './components/pages/admin/AdminDashboard'
 const App = () => {
   return (
     <div>
@@ -18,6 +23,11 @@ const App = () => {
           <Route path='/*' element={<NoPage/>} />
           <Route path="/product-info" element={<ProductInfo />} />
           <Route path="/cart" element={<CartPage/>} />
+          <Route path='/all-products' element={<AllProducts/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/signup' element={<SignUp/>}/>
+          <Route path='/user-dashboard' element={<UserDashboard/>}/>
+          <Route path='/admin-dashboard' element={<AdminDashboard/>}/>
         </Routes>
       </BrowserRouter>
     </div>

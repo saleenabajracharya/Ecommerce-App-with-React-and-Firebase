@@ -7,7 +7,7 @@ export const Layout = ({children}) => {
     <div>
         <Navbar />
         <SmallScreenSearch/>
-        <div className="main-content min-vh-100 pt-5">
+        <div className="main-content min-vh-90 pt-5">
             {children}
         </div>
         <Footer/>
