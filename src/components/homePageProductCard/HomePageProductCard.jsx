@@ -116,7 +116,7 @@ export const HomePageProductCard = () => {
                       <h1 className="h5 fw-medium text-dark mb-2 fs-6 fs-md-6 fs-lg-5 fs-xl-4 title">
                         {title.substring(0, 25)}
                       </h1>
-                      <h1 className="h5 fw-medium text-dark mb-3 fs-6 fs-md-5 fs-lg-4" title>
+                      <h1 className="h5 fw-medium text-dark mb-3 fs-6 fs-md-5 fs-lg-4">
                         Rs.{price}
                       </h1>
                       <div className="d-flex justify-content-center">

@@ -80,6 +80,11 @@ input.search{
   width: 600px;
 }
 
+ul[role="tablist"] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 @media (max-width: 576px) {
   .container-category .row{
     padding-left: 2.5rem;
@@ -150,4 +155,10 @@ footer{
 
 .hover-shadow:hover {
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.product-button:hover{
+  background-color: #c3e1bb !important;
+  transform: scale(1.04); 
+  transition: transform 0.3s ease-in-out;
 }

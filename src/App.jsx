@@ -13,9 +13,13 @@ import { Login } from './components/registration/Login'
 import { SignUp } from './components/registration/SignUp'
 import { UserDashboard } from './components/pages/user/UserDashboard'
 import { AdminDashboard } from './components/pages/admin/AdminDashboard'
+import { AddProductPage } from './components/pages/admin/AddProductPage'
+import { UpdateProductPage } from './components/pages/admin/UpdateProductPage'
+import {MyState} from './context/myState'
+
 const App = () => {
   return (
-    <div>
+    <MyState>
       <BrowserRouter>
         <ScrollTop/>
         <Routes>
@@ -28,9 +32,11 @@ const App = () => {
           <Route path='/signup' element={<SignUp/>}/>
           <Route path='/user-dashboard' element={<UserDashboard/>}/>
           <Route path='/admin-dashboard' element={<AdminDashboard/>}/>
+          <Route path='/addproduct' element={<AddProductPage/>}/>
+          <Route path='/updateproduct' element={<UpdateProductPage/>}/>
         </Routes>
       </BrowserRouter>
-    </div>
+    </MyState>
   );
 };
 
