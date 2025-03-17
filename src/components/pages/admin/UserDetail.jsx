@@ -1,6 +1,9 @@
-import React from 'react'
+import { useContext } from "react"
+import { myContext } from "../../../context/myContext"
 
 export const UserDetail = () => {
+    const context = useContext(myContext);
+    const { getAllUser } = context;
   return (
     <div>
                 <div>
@@ -15,16 +18,28 @@ export const UserDetail = () => {
                             <tbody>
                                 <tr>
                                     <th scope="col" className="py-3 px-4 border bg-light fw-bold">S.No.</th>
-                                    <th scope="col" className="py-3 px-4 border bg-light fw-bold">Location Name</th>
-                                    <th scope="col" className="py-3 px-4 border bg-light fw-bold">Action</th>
-                                    <th scope="col" className="py-3 px-4 border bg-light fw-bold">Action</th>
+                                    <th scope="col" className="py-3 px-4 border bg-light fw-bold">Name</th>
+                                    <th scope="col" className="py-3 px-4 border bg-light fw-bold">Email</th>
+                                    <th scope="col" className="py-3 px-4 border bg-light fw-bold">Uid</th>
+                                    <th scope="col" className="py-3 px-4 border bg-light fw-bold">Date</th>
+                                    <th scope="col" className="py-3 px-4 border bg-light fw-bold">Role</th>
                                 </tr>
-                                <tr className="text-danger">
-                                    <td className="py-3 px-4 border text-secondary">1.</td>
-                                    <td className="py-3 px-4 border text-secondary text-capitalize">name</td>
-                                    <td className="py-3 px-4 border text-success " style={{cursor:"pointer"}}>Edit</td>
-                                    <td className="py-3 px-4 border text-danger " style={{cursor:"pointer"}}>Delete</td>
+                                {
+                                getAllUser.map((value, index) => {
+                                    return (
+                                <tr key={index} className="text-danger">
+                                    <td className="py-3 px-4 border text-secondary">{index+1}</td>
+                                    <td className="py-3 px-4 border text-secondary text-capitalize">{value.fullName}</td>
+                                    <td className="py-3 px-4 border text-success " >{value.email}</td>
+                                    <td className="py-3 px-4 border text-danger " >{value.uid}</td>
+                                    <td className="py-3 px-4 border text-secondary text-capitalize">{value.role}</td>
+                                    <td className="py-3 px-4 border text-secondary text-capitalize">{value.date}</td>
+
                                 </tr>
+                                 )
+                                })
+                            }
+
                             </tbody>
                         </table>
                     </div>

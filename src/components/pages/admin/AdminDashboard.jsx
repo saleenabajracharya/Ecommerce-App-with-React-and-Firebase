@@ -1,4 +1,5 @@
-import React from "react";
+import {useContext} from "react";
+import { myContext } from "../../../context/myContext";
 import { Layout } from "../../layout/Layout";
 import { CiShoppingBasket } from "react-icons/ci";
 import { FaListOl } from "react-icons/fa";
@@ -9,6 +10,9 @@ import { OrderDetail } from "./OrderDetail";
 import { UserDetail } from "./UserDetail";
 
 export const AdminDashboard = () => {
+  const user = JSON.parse(localStorage.getItem('users'))
+  const context = useContext(myContext);
+    const {getAllProduct, getAllOrder, getAllUser} = context;
     return (
         <Layout>
         <div className="container mt-5">
@@ -25,10 +29,16 @@ export const AdminDashboard = () => {
                     </div>
  
                     <h2 className="" style={{color:"#67a357"}}>
-                        <span className="fw-semibold">Name :</span> Salina Bajracharya
+                        <span className="fw-semibold">Name :</span> {user?.fullName}
                     </h2>
                     <h2 className="" style={{color:"#67a357"}}>
-                        <span className="fw-semibold">Email :</span> salina@gmail.com
+                        <span className="fw-semibold">Email :</span> {user?.email}
+                    </h2>
+                    <h2 className="" style={{color:"#67a357"}}>
+                        <span className="fw-semibold">Date :</span> {user?.date}
+                    </h2>
+                    <h2 className="" style={{color:"#67a357"}}>
+                        <span className="fw-semibold">Role :</span> {user?.role}
                     </h2>
                 </div>
             </div>
@@ -78,7 +88,7 @@ export const AdminDashboard = () => {
                         <CiShoppingBasket className="my-2" style={{ fontSize: "50px", fontWeight:"100px" }} />
                         </div>
               </div>
-              <h2 className="fw-bold display-6" style={{color:"#67a357"}}>10</h2>
+              <h2 className="fw-bold display-6" style={{color:"#67a357"}}>{getAllProduct.length}</h2>
               <p className="fw-bold" style={{color:"#67a357"}}>Total Products</p>
             </div>
           </Tab>
@@ -91,7 +101,7 @@ export const AdminDashboard = () => {
               <FaListOl className="my-3" style={{ fontSize: "35px" }} />
                         </div>
               </div>
-              <h2 className="fw-bold display-6" style={{color:"#67a357"}}>10</h2>
+              <h2 className="fw-bold display-6" style={{color:"#67a357"}}>{getAllOrder.length}</h2>
               <p className="fw-bold" style={{color:"#67a357"}}>Total Order</p>
             </div>
           </Tab>
@@ -105,7 +115,7 @@ export const AdminDashboard = () => {
                             style={{ fontSize: "35px" }}/>
                         </div>
               </div>
-              <h2 className="fw-bold display-6"  style={{color:"#67a357"}}>10</h2>
+              <h2 className="fw-bold display-6"  style={{color:"#67a357"}}>{getAllUser.length}</h2>
               <p className="fw-bold"  style={{color:"#67a357"}}>Total Users</p>
             </div>
           </Tab>

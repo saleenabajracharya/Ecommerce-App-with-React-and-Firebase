@@ -20,7 +20,6 @@ export const HomePage = () => {
         <Category/>
         <HomePageProductCard/>
         <Track/>
-        {name}
         </Layout>
   )
 }

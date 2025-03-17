@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye,  FaRegEyeSlash } from "react-icons/fa";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Loader } from "../loader/Loader";
+import { myContext } from '../../context/myContext';
+import { Timestamp, addDoc, collection } from "firebase/firestore";
+import { auth, fireDB } from "../../firebase/FirebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 export const SignUp = () => {
+    const context = useContext(myContext);
+    const {loading, setLoading } = context;
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
         password: "",
-        confirmPassword: ""
+        confirmPassword: "",
+        role:"user"
     });
 
     const [errors, setErrors] = useState({});
@@ -22,9 +31,9 @@ export const SignUp = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const validateForm = () => {
+    const validateForm = async () => {
         let newErrors = {};
-
+    
         if (!formData.fullName.trim()) newErrors.fullName = "Full Name is required";
         if (!formData.email.trim()) newErrors.email = "Email is required";
         if (!formData.password.trim()) {
@@ -37,23 +46,74 @@ export const SignUp = () => {
         } else if (formData.password !== formData.confirmPassword) {
             newErrors.confirmPassword = "Passwords do not match";
         }
-
+    
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
-
-    const handleSubmit = (e) => {
+    
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (validateForm()) {
-            toast.success("Signup Successful!", { position: "top-right", autoClose: 3000 });
-            setTimeout(() => {
-                navigate("/login"); 
-            }, 1000);
+        
+        setLoading(true);
+        
+
+        const isValid = await validateForm();
+        if (!isValid) {
+            setLoading(false);
+            return;
         }
+    
+        try {
+            debugger;
+            const users = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+    
+
+            const user = {
+                fullName: formData.fullName,
+                email: users.user.email,
+                uid: users.user.uid,
+                role: formData.role,
+                time: Timestamp.now(),
+                date: new Date().toLocaleString(
+                    "en-US",
+                    {
+                        month: "short",
+                        day: "2-digit",
+                        year: "numeric",
+                    })
+            };
+    
+
+            const userRef = collection(fireDB, "users");
+            await addDoc(userRef, user);
+    
+            toast.success("Signup Successful!", { position: "top-right", autoClose: 3000 });
+    
+            setFormData({
+                fullName: "",
+                email: "",
+                password: "",
+                confirmPassword: "",
+
+            });
+            
+    
+
+            setTimeout(() => {
+                navigate("/login");
+            }, 1000);
+        } catch (error) {
+
+            toast.error(error.message, { position: "top-right", autoClose: 3000 });
+        }
+    
+        setLoading(false);
     };
+    
 
     return (
         <div className="d-flex justify-content-center align-items-center min-vh-100">
+             {loading && <Loader/>}
             <div className="login_Form px-3 px-lg-4 py-5 border border-success-subtle rounded shadow-sm">
                 <div className="mb-4">
                     <h2 className="text-center fs-4 fw-bold" style={{ color: "#67a357" }}>
@@ -126,10 +186,10 @@ export const SignUp = () => {
 
                     {/* Signup Button */}
                     <div className="mb-4">
-                        <button type="submit" className="btn w-100 fw-bold" style={{ backgroundColor: "#67a357", color: "white" }}><Link className="text-decoration-none fw-bold" style={{ color: "#fff" }} to={"/login"}>
-                            Sign Up
-                            </Link>
-                        </button>
+                    <button type="submit" className="btn w-100 fw-bold" style={{ backgroundColor: "#67a357", color: "white" }}>
+    Sign Up
+</button>
+
                     </div>
                 </form>
 
@@ -142,7 +202,9 @@ export const SignUp = () => {
                         </Link>
                     </p>
                 </div>
+                <ToastContainer position="top-center" autoClose={3000} />
             </div>
+            
         </div>
     );
 };

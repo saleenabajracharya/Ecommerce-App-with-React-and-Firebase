@@ -6,6 +6,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,13 +19,13 @@ export const Footer = () => {
             className="d-flex align-items-center text-white fw-medium text-decoration-none"
           >
             <span className="fs-5 text-white text-decoration-none text-uppercase fw-bold">
-              Navbar
+            <img src="/images/logo.jpg" style={{height:"50px", width:"50px"}} alt="" srcset="" />
             </span>
           </Link>
 
           <div class="text-center my-2">
             <small className="text-white">
-              © Navbar {currentYear}
+              © EcoShop {currentYear}
               <span id="year"></span>
             </small>
           </div>

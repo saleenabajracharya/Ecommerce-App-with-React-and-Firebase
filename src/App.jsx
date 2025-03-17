@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import { HomePage } from './components/pages/home/HomePage'
@@ -16,6 +13,10 @@ import { AdminDashboard } from './components/pages/admin/AdminDashboard'
 import { AddProductPage } from './components/pages/admin/AddProductPage'
 import { UpdateProductPage } from './components/pages/admin/UpdateProductPage'
 import {MyState} from './context/myState'
+import { ProtectedRouteForAdmin } from './protectedRoute/ProtectedRouteForAdmin'
+import { ProtectedRouteForUser } from './protectedRoute/ProtectedRouteForUser'
+import { ToastContainer } from 'react-toastify'
+import { CategoryPage } from './components/pages/category/CategoryPage'
 
 const App = () => {
   return (
@@ -25,16 +26,29 @@ const App = () => {
         <Routes>
           <Route path='/' element={<HomePage/>} />
           <Route path='/*' element={<NoPage/>} />
-          <Route path="/product-info" element={<ProductInfo />} />
+          <Route path="/product-info/:id" element={<ProductInfo />} />
           <Route path="/cart" element={<CartPage/>} />
           <Route path='/all-products' element={<AllProducts/>}/>
+          <Route path="/category/:categoryname" element={<CategoryPage />} />
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<SignUp/>}/>
-          <Route path='/user-dashboard' element={<UserDashboard/>}/>
-          <Route path='/admin-dashboard' element={<AdminDashboard/>}/>
-          <Route path='/addproduct' element={<AddProductPage/>}/>
-          <Route path='/updateproduct' element={<UpdateProductPage/>}/>
+          <Route path='/user-dashboard' element={
+            <ProtectedRouteForUser>
+              <UserDashboard/>
+              </ProtectedRouteForUser>}/>
+          <Route path='/admin-dashboard' element={<ProtectedRouteForAdmin><AdminDashboard/></ProtectedRouteForAdmin>}/>
+          <Route path="/addproduct" element={
+            <ProtectedRouteForAdmin>
+              <AddProductPage />
+            </ProtectedRouteForAdmin>
+          } />
+          <Route path="/updateproduct/:id" element={
+            <ProtectedRouteForAdmin>
+              <UpdateProductPage />
+            </ProtectedRouteForAdmin>
+          } />
         </Routes>
+
       </BrowserRouter>
     </MyState>
   );

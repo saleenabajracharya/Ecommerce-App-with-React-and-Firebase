@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const category = [
     { image: "/images/icons/consumption.png", name: 'fashion' },
     { image: "/images/icons/shirt.png", name: 'shirt' },
@@ -11,6 +13,8 @@ const category = [
 ];
 
 export const Category = () => {
+    const navigate = useNavigate();
+
     return (
         <div className="container mt-3 container-category">
             <div className="text-center my-4">
@@ -20,7 +24,8 @@ export const Category = () => {
                 {category.map((item, index) => (
                     <div key={index} className="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-auto text-center mb-3 ">
                         <div className="rounded-circle d-flex align-items-center justify-content-center mb-2 category shadow"
-                             style={{ width: "85px", height: "85px", transition: "0.3s" }}>
+                             style={{ width: "85px", height: "85px", transition: "0.3s" }}
+                             onClick={() => navigate(`/category/${item.name}`)}>
                             <img src={item.image} alt={item.name} className="img-fluid rounded-circle" 
                                  style={{ width: "60px", height: "60px", objectFit: "cover" }} />
                         </div>

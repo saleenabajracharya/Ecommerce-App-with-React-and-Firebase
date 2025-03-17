@@ -162,3 +162,9 @@ footer{
   transform: scale(1.04); 
   transition: transform 0.3s ease-in-out;
 }
+
+.category:hover{
+  background-color: #c3e1bb !important;
+  transform: scale(1.04); 
+  transition: transform 0.3s ease-in-out;
+}
